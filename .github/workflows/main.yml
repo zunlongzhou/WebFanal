@@ -1,0 +1,18 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [ master ]
+
+env:
+  CI_CHECK_FAIL: ssh2
+
+jobs:
+  build:
+    runs-on: self-hosted
+ 
+    steps:
+      
+      - name: Push Docker Image
+        run: echo 123
