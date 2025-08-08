@@ -16,3 +16,17 @@ jobs:
       
       - name: Push Docker Image
         run: echo 123
+
+      - name: Create issue if risk found
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const result = "123123123123";
+            if (result && result.trim() !== "") {
+              github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: "CI/CD扫描发现风险",
+                body: result
+              });
+            }
